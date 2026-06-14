@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class BoardGame implements Comparable<BoardGame> {
     // instance variables
-    private final String gameID; // A unique ID to identify the board game.
+    private final String gameId; // A unique ID to identify the board game.
     private String gameName = ""; // The board games title.
     private int minPlayers = 0; // The minimum number of players needed to play the game.
     private int maxPlayers = 0; // The maximum number of players that can play the game.
@@ -24,15 +24,15 @@ public class BoardGame implements Comparable<BoardGame> {
     /**
      * Constructor for objects of class BoardGame.
      * 
-     * @param gameID     the unique identifier for the board game
+     * @param gameId     the unique identifier for the board game
      * @param minPlayers the minimum number of players required
      * @param maxPlayers the maximum number of players allowed
      * @param genre      the genre or category of the board game
      */
-    public BoardGame(String gameID, String gameName, int minPlayers, int maxPlayers, String genre) {
+    public BoardGame(String gameId, String gameName, int minPlayers, int maxPlayers, String genre) {
         // initialise instance variables
-        this.gameID = gameID;
-        this.gameName = (gameName == null || gameName.isBlank()) ? gameID : gameName;
+        this.gameId = gameId;
+        this.gameName = (gameName == null || gameName.isBlank()) ? gameId : gameName;
         this.minPlayers = minPlayers;
         this.maxPlayers = maxPlayers;
         this.genre = genre;
@@ -122,16 +122,16 @@ public class BoardGame implements Comparable<BoardGame> {
     /**
      * Returns the board games unique name.
      * 
-     * @return gameID the board games unique name.
+     * @return gameId the board games unique name.
      */
-    public String getGameID() {
-        return gameID;
+    public String getGameId() {
+        return gameId;
     }
 
     /**
      * Returns the board games name.
      * 
-     * @return gameID the board games name.
+     * @return gameId the board games name.
      */
     public String getGameName() {
         return gameName;
@@ -213,10 +213,10 @@ public class BoardGame implements Comparable<BoardGame> {
      * Return a string representation of the board game including its genre,
      * minimum and maximum player count.
      * 
-     * @return a string represntation of the board game.
+     * @return a string representation of the board game.
      */
     public String toString() {
-        return ("Game ID: " + gameID + "\n" + "Name: " + gameName + "\n" + "Minimum players: " + minPlayers
+        return ("Game ID: " + gameId + "\n" + "Name: " + gameName + "\n" + "Minimum players: " + minPlayers
                 + "\n" + "Maximum players: " + maxPlayers + "\n" + "Genre(s): " + genre + "\n" + "Play time: "
                 + playTime + "\n" + "Publisher: " + publisher + "\n" + "Designer(s): " + designer + "\n"
                 + "Year published: " + yearPublished + "\n" + "Available: " + isAvailable);
@@ -224,7 +224,7 @@ public class BoardGame implements Comparable<BoardGame> {
 
     /**
      * Determines whether this object is equal to another.
-     * Two BoardGame objects are equal if they have the same gameID.
+     * Two BoardGame objects are equal if they have the same gameId.
      * 
      * @param obj the object to compare with this BoardGame.
      * @return true if the objects are the same, false otherwise.
@@ -239,20 +239,20 @@ public class BoardGame implements Comparable<BoardGame> {
             return false;
 
         BoardGame other = (BoardGame) obj;
-        return Objects.equals(gameID, other.gameID);
+        return Objects.equals(gameId, other.gameId);
     }
 
     /**
      * Compares this board game with another to sort alphabetically
-     * from A-Z by gameID.
+     * from A-Z by gameId.
      * 
      * @param other the BoardGame object to compare with this.
-     * @return a negative value if this gameID comes before the other,
+     * @return a negative value if this gameId comes before the other,
      *         zero if equal, or positive if it comes after.
      */
     @Override
     public int compareTo(BoardGame other) {
-        return this.gameID.compareTo(other.gameID);
+        return this.gameId.compareTo(other.gameId);
     }
 
     /**
@@ -262,6 +262,6 @@ public class BoardGame implements Comparable<BoardGame> {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(gameID);
+        return Objects.hash(gameId);
     }
 }

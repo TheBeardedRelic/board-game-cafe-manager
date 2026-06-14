@@ -34,7 +34,7 @@ public class CafeManager {
      * @return false if the game is already inside the collection.
      */
     public boolean addBoardGame(BoardGame game) {
-        String id = game.getGameID();
+        String id = game.getGameId();
 
         if (boardGames.containsKey(id)) {
             return false; // already exists
@@ -51,28 +51,28 @@ public class CafeManager {
      * @return true if the board game has been successfully removed, false
      *         otherwise.
      */
-    public boolean removeBoardGame(String gameID) {
-        return boardGames.remove(gameID) != null;
+    public boolean removeBoardGame(String gameId) {
+        return boardGames.remove(gameId) != null;
     }
 
     /**
      * Find a board game by game ID.
      * 
-     * @param gameID the game ID of a board game.
-     * @return gameID the board game object if it is in the collection.
+     * @param gameId the game ID of a board game.
+     * @return gameId the board game object if it is in the collection.
      */
-    public BoardGame getGameByID(String gameID) {
-        return boardGames.get(gameID);
+    public BoardGame getGameById(String gameId) {
+        return boardGames.get(gameId);
     }
 
     /**
      * Check if a board game is currently in the collection.
      * 
-     * @param gameID the name of a board game.
+     * @param gameId the name of a board game.
      * @return true if the game is in the collection.
      */
-    public boolean containsGame(String gameID) {
-        return boardGames.containsKey(gameID);
+    public boolean containsGame(String gameId) {
+        return boardGames.containsKey(gameId);
     }
 
     /**
@@ -85,7 +85,7 @@ public class CafeManager {
     }
 
     /**
-     * Returns the collection sorted alphabetically by gameID.
+     * Returns the collection sorted alphabetically by gameId.
      */
     public List<BoardGame> getAllGamesSorted() {
         List<BoardGame> list = new ArrayList<>(boardGames.values());
@@ -221,7 +221,7 @@ public class CafeManager {
     /**
      * Searches the collection for board games that are currently available.
      * 
-     * @return a list of board games whose availabilty status is true.
+     * @return a list of board games whose availability status is true.
      */
     public List<BoardGame> getAvailableGames() {
         List<BoardGame> results = new ArrayList<>();
@@ -249,43 +249,43 @@ public class CafeManager {
      * @return true if the game exists and the genre was successfully updated;
      *         false if the ID is not found or the new genre is null/blank
      */
-    public boolean updateGenre(String id, String newGenre) {
-        if (!gameExists(id) || isBlank(newGenre)) {
+    public boolean updateGenre(String gameId, String newGenre) {
+        if (!gameExists(gameId) || isBlank(newGenre)) {
             return false;
         }
-        boardGames.get(id).setGenre(newGenre);
+        boardGames.get(gameId).setGenre(newGenre);
         return true;
     }
 
     /**
      * Updates the availability status of the board game with the given ID.
      *
-     * @param id          the unique ID of the board game to update
+     * @param gameId      the unique ID of the board game to update
      * @param isAvailable the new availability status to assign
      * @return true if the game exists and the availability was updated;
      *         false if the ID does not exist in the collection
      */
-    public boolean updateAvailability(String id, boolean isAvailable) {
-        if (!gameExists(id)) {
+    public boolean updateAvailability(String gameId, boolean isAvailable) {
+        if (!gameExists(gameId)) {
             return false;
         }
-        boardGames.get(id).setAvailable(isAvailable);
+        boardGames.get(gameId).setAvailable(isAvailable);
         return true;
     }
 
     /**
      * Updates the name of the board game with the given ID.
      *
-     * @param id      the unique ID of the board game to update
+     * @param gameId  the unique ID of the board game to update
      * @param newName the new board game name to assign
      * @return true if the game exists and the name was updated;
      *         false if the ID does not exist in the collection or newName is blank
      */
-    public boolean updateName(String id, String newName) {
-        if (!gameExists(id) || isBlank(newName)) {
+    public boolean updateName(String gameId, String newName) {
+        if (!gameExists(gameId) || isBlank(newName)) {
             return false;
         }
-        boardGames.get(id).setGameName(newName);
+        boardGames.get(gameId).setGameName(newName);
         return true;
     }
 
@@ -293,18 +293,18 @@ public class CafeManager {
      * Updates the minimum and maximum number of players of the board game
      * with the given ID.
      *
-     * @param id     the unique ID of the board game to update
+     * @param gameId the unique ID of the board game to update
      * @param newMin the new minimum player count to assign
      * @param newMax the new maximum player count to assign
      * @return true if the game exists and the player counts were updated;
      *         false if the ID does not exist
      */
-    public boolean updatePlayerCounts(String id, int newMin, int newMax) {
-        if (!gameExists(id)) {
+    public boolean updatePlayerCounts(String gameId, int newMin, int newMax) {
+        if (!gameExists(gameId)) {
             return false;
         }
-        boardGames.get(id).setMinPlayers(newMin);
-        boardGames.get(id).setMaxPlayers(newMax);
+        boardGames.get(gameId).setMinPlayers(newMin);
+        boardGames.get(gameId).setMaxPlayers(newMax);
         return true;
     }
 
@@ -355,7 +355,7 @@ public class CafeManager {
 
     // Helper method to clean user inputs
     private String normalise(String text) {
-        return text.trim().toLowerCase();
+        return text == null ? "" : text.trim().toLowerCase();
     }
 
     // Helper method to check for valid inputs
